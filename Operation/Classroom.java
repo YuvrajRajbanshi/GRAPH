@@ -20,7 +20,12 @@ public class Classroom {
     public static void main(String[] args) {
 
         int v = 5;
+        @SuppressWarnings("unchecked")
         ArrayList<Edge>[] graph = new ArrayList[v];
+
+        for (int i = 0; i < graph.length; i++) {
+            graph[i] = new ArrayList<>();
+        }
 
         // 0 - vertex
         graph[0].add(new Edge(0, 1, 5));
@@ -47,6 +52,7 @@ public class Classroom {
             Edge e = graph[2].get(i);
             System.out.print(e.dest);
         }
+        System.out.println();
 
     }
 }
