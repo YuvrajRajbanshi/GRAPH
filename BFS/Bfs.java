@@ -47,9 +47,39 @@ public class Bfs {
         graph[6].add(new Edge(6, 5, 1));
     }
 
+    // actual BFS funtion
+    // public static void BFS(ArrayList<Edge>[] graph) {
+    // Queue<Integer> q = new LinkedList<>();
+    // boolean vis[] = new boolean[graph.length];
+    // q.add(0); // source = 0
+    // while (!q.isEmpty()) {
+    // int curr = q.remove();
+    // if (!vis[curr]) {
+    // // visit curr
+    // System.out.print(curr + " ");
+    // vis[curr] = true;
+    // for (int i = 0; i < graph[curr].size(); i++) {
+    // Edge e = graph[curr].get(i);
+    // q.add(e.dest);
+    // }
+    // }
+    // }
+    // }
+
     public static void BFS(ArrayList<Edge>[] graph) {
-        Queue<Integer> q = new LinkedList<>();
         boolean vis[] = new boolean[graph.length];
+        for (int i = 0; i < graph.length; i++) {
+            if (!vis[i]) {
+                BFSUtil(graph, vis);
+            }
+        }
+
+    }
+
+    public static void BFSUtil(ArrayList<Edge>[] graph, boolean vis[]) {
+
+        Queue<Integer> q = new LinkedList<>();
+        // boolean vis[] = new boolean[graph.length];
         q.add(0); // source = 0
         while (!q.isEmpty()) {
             int curr = q.remove();

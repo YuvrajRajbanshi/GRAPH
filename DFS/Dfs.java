@@ -46,7 +46,15 @@ public class Dfs {
         graph[6].add(new Edge(6, 5, 1));
     }
 
-    public static void dfs(ArrayList<Edge>[] graph, int curr, boolean vis[]) {
+    public static void dfs(ArrayList<Edge>[] graph) {
+        boolean vis[] = new boolean[graph.length];
+
+        for (int i = 0; i < graph.length; i++) {
+            dfsUtil(graph, i, vis);
+        }
+    }
+
+    public static void dfsUtil(ArrayList<Edge>[] graph, int curr, boolean vis[]) {
 
         System.out.print(curr + " ");
         vis[curr] = true;
@@ -54,7 +62,7 @@ public class Dfs {
         for (int i = 0; i < graph[curr].size(); i++) {
             Edge e = graph[curr].get(i);
             if (!vis[e.dest]) {
-                dfs(graph, e.dest, vis);
+                dfsUtil(graph, e.dest, vis);
             }
         }
 
@@ -67,6 +75,6 @@ public class Dfs {
         createGraph(graph);
         boolean vis[] = new boolean[graph.length];
 
-        dfs(graph, 0, vis);
+        // dfs(graph, 0, vis);
     }
 }
